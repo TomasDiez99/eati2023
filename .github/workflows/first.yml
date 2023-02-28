@@ -8,12 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "my first step"
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       - run: python eati.py EATI 2023
   job2:
     name: "My second job"
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v3
       - run: |
           echo "Mi nombre es Tomás!"
           echo "Estoy haciendo un curso de Github Actions!"
