@@ -1,20 +1,34 @@
-name: First
+name: Second
 
-on: ["push"]
+on:
+  push:
+    branches:
+      - workflows2
 
 jobs:
   job1:
-    name: "My first job"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "my first step"
-        uses: actions/checkout@v3
-      - run: python eati.py EATI 2023
-  job2:
-    name: "My second job"
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          echo "Mi nombre es Tomás!"
-          echo "Estoy haciendo un curso de Github Actions!"
+      - run: python eati.py "Workflow" "Dependencies"
+  job2:
+    runs-on: windows-2022
+    steps:
+      - run: Get-Command
+
+  job3:
+    needs: [job1,job2]
+    runs-on: ubuntu-latest
+    steps:
+      - run: env
+
+  job4:
+    runs-on: ubuntu-latest
+    steps:
+      - run: cat /etc/*release
+
+  job5:
+    needs: [job3,job4]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Fin Workflow"
