@@ -29,7 +29,6 @@ jobs:
       - name: "Tercer step"
         run: |
           echo "${{ SCOPE }}"
-
   job2:
     name: "segundo job"
     runs-on: windows-latest
