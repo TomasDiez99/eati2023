@@ -1,4 +1,4 @@
-name: fourth
+name: Fourth
 env:
   WORKFLOW_VARIABLE: WorkflowVar
   SCOPE: ScopeVar
