@@ -3,8 +3,7 @@ name: Second
 on:
   push:
     branches:
-<<<<<<< HEAD
-      - workflow2
+      - workflows2
 
 jobs:
   job1:
