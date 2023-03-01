@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Primer step"
-        runs: |
+        run: |
           echo "${{ secrets.SECRET_1 }}"
