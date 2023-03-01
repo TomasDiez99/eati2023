@@ -37,34 +37,4 @@ jobs:
     needs: [job3,job4]
     runs-on: ubuntu-latest
     steps:
-=======
-      - workflows2
-
-jobs:
-  job1:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - run: python eati.py "Workflow" "Dependencies"
-  job2:
-    runs-on: windows-2022
-    steps:
-      - run: Get-Command
-
-  job3:
-    needs: [job1,job2]
-    runs-on: ubuntu-latest
-    steps:
-      - run: env
-
-  job4:
-    runs-on: ubuntu-latest
-    steps:
-      - run: cat /etc/*release
-
-  job5:
-    needs: [job3,job4]
-    runs-on: ubuntu-latest
-    steps:
->>>>>>> ea031fff2cdabf4f9d9b1a2619fc85486f158643
       - run: echo "Fin Workflow"
