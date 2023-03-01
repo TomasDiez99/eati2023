@@ -1,4 +1,4 @@
-name: fourth
+name: Fourth
 env:
   WORKFLOW_VARIABLE: WorkflowVar
   SCOPE: ScopeVar
@@ -20,18 +20,17 @@ jobs:
         env:
           STEP_VARIABLE: StepVar
           SCOPE: ScopeVarStepWide
+        run: |
+          echo "${{ env.WORKFLOW_VARIABLE }}"
+          echo "${{ env.SCOPE }}"
+          echo "${{ env.JOB_VARIABLE }}"
+          echo "${{ env.STEP_VARIABLE }}"
       - name: "Segundo step"
         run: |
-          echo "${{ WORKFLOW_VARIABLE }}"
-          echo "${{ SCOPE }}"
-          echo "${{ JOB_VARIABLE }}"
-          echo "${{ STEP_VARIABLE }}"
-      - name: "Tercer step"
-        run: |
-          echo "${{ SCOPE }}"
+          echo "${{ env.SCOPE }}"
   job2:
     name: "segundo job"
     runs-on: windows-latest
     steps:
       - run: |
-          echo "${{ SCOPE }}"
+          echo "${{ env.SCOPE }}"
