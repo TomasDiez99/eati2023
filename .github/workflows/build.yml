@@ -38,6 +38,8 @@ jobs:
           ./main
         id: main-run
       - if steps.main-run.outcome == 'success' && steps.main-run.exit-code == 0
-        run: echo "Exito"
+        run: |
+          echo "Exito"
         if steps.main-run.outcome == 'success' && steps.main-run.exit-code != 0
-        run: echo "Error"
+        run: |
+          echo "Error"
