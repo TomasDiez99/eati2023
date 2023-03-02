@@ -1,0 +1,45 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - workflows6
+
+jobs:
+  job1:
+    name: 'Build job'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Primer step'
+        uses: actions/checkout@v3
+        with:
+          repository: jmoyano/cautious-meme
+          ref: main
+          path: ./main
+      - run: |
+          gcc main.c -o main
+      - uses: actions/upload-artifact@v2
+        with:
+          name: envoutput
+          path: main
+  job2:
+    needs: [job1]
+    name: "Test job"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: envoutput
+      - run: |
+          ls
+      - run: |
+          chmod +x ./main
+      - run: |
+          ./main
+        id: main-run
+      - if steps.main-run.outcome == 'success' && steps.main-run.exit-code == 0
+        run: |
+          echo "Exito"
+        if steps.main-run.outcome == 'success' && steps.main-run.exit-code != 0
+        run: |
+          echo "Error"
