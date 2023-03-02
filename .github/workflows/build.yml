@@ -15,7 +15,6 @@ jobs:
         with:
           repository: jmoyano/cautious-meme
           ref: main
-          path: ./main
       - run: |
           gcc main.c -o main
       - uses: actions/upload-artifact@v2
@@ -37,9 +36,9 @@ jobs:
       - run: |
           ./main
         id: main-run
-      - if steps.main-run.outcome == 'success' && steps.main-run.exit-code == 0
+      - if: steps.main-run.outcome == 'success' && steps.main-run.exit-code == 0
         run: |
-          echo "Exito"
-        if steps.main-run.outcome == 'success' && steps.main-run.exit-code != 0
+          echo "Exito!"
+      - if: steps.main-run.outcome == 'success' && steps.main-run.exit-code != 0
         run: |
-          echo "Error"
+          echo "Error!"
